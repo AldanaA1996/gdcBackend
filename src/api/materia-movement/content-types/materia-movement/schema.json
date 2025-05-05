@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "materials_movements",
+  "info": {
+    "singularName": "materia-movement",
+    "pluralName": "materials-movements",
+    "displayName": "MateriaMovement"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "quantity": {
+      "type": "decimal"
+    },
+    "movement_type": {
+      "type": "enumeration",
+      "enum": [
+        "in",
+        "out"
+      ],
+      "required": true
+    },
+    "movement_date": {
+      "type": "date"
+    },
+    "notes": {
+      "type": "text"
+    },
+    "material": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::material.material",
+      "inversedBy": "material_movements"
+    },
+    "department": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::department.department",
+      "inversedBy": "materia_movements"
+    }
+  }
+}

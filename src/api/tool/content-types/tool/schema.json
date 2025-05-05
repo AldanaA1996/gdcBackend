@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tools",
+  "info": {
+    "singularName": "tool",
+    "pluralName": "tools",
+    "displayName": "Tool",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "text",
+      "required": true
+    },
+    "amount": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "department": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::department.department",
+      "inversedBy": "tools"
+    },
+    "description": {
+      "type": "text"
+    },
+    "purchase_date": {
+      "type": "date"
+    },
+    "warrantyExpirationDate": {
+      "type": "date"
+    }
+  }
+}

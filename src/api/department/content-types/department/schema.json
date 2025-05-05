@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "departments",
+  "info": {
+    "singularName": "department",
+    "pluralName": "departments",
+    "displayName": "Department"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "text",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "tools": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tool.tool",
+      "mappedBy": "department"
+    },
+    "materia_movements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::materia-movement.materia-movement",
+      "mappedBy": "department"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "materials",
+  "info": {
+    "singularName": "material",
+    "pluralName": "materials",
+    "displayName": "Material"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "text",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "unit": {
+      "type": "biginteger"
+    },
+    "quantity": {
+      "type": "decimal"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Kg.",
+        "Mtrs.",
+        "Unidades",
+        "Ltrs."
+      ]
+    },
+    "material_movements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::materia-movement.materia-movement",
+      "mappedBy": "material"
+    }
+  }
+}
