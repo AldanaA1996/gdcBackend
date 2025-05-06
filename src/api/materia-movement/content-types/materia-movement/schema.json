@@ -4,7 +4,8 @@
   "info": {
     "singularName": "materia-movement",
     "pluralName": "materials-movements",
-    "displayName": "MateriaMovement"
+    "displayName": "MaterialMovement",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -21,8 +22,8 @@
     "movement_type": {
       "type": "enumeration",
       "enum": [
-        "in",
-        "out"
+        "entry",
+        "exit"
       ],
       "required": true
     },

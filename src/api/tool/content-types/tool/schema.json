@@ -38,6 +38,11 @@
     },
     "warrantyExpirationDate": {
       "type": "date"
+    },
+    "group": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::group.group"
     }
   }
 }

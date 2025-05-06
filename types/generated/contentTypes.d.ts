@@ -445,7 +445,8 @@ export interface ApiMateriaMovementMateriaMovement
   extends Struct.CollectionTypeSchema {
   collectionName: 'materials_movements';
   info: {
-    displayName: 'MateriaMovement';
+    description: '';
+    displayName: 'MaterialMovement';
     pluralName: 'materials-movements';
     singularName: 'materia-movement';
   };
@@ -472,7 +473,7 @@ export interface ApiMateriaMovementMateriaMovement
     >;
     material: Schema.Attribute.Relation<'manyToOne', 'api::material.material'>;
     movement_date: Schema.Attribute.Date;
-    movement_type: Schema.Attribute.Enumeration<['in', 'out']> &
+    movement_type: Schema.Attribute.Enumeration<['entry', 'exit']> &
       Schema.Attribute.Required;
     notes: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
@@ -486,6 +487,7 @@ export interface ApiMateriaMovementMateriaMovement
 export interface ApiMaterialMaterial extends Struct.CollectionTypeSchema {
   collectionName: 'materials';
   info: {
+    description: '';
     displayName: 'Material';
     pluralName: 'materials';
     singularName: 'material';
@@ -502,7 +504,12 @@ export interface ApiMaterialMaterial extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    department: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::department.department'
+    >;
     description: Schema.Attribute.Text;
+    group: Schema.Attribute.Relation<'oneToOne', 'api::group.group'>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -515,8 +522,7 @@ export interface ApiMaterialMaterial extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.Text & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     quantity: Schema.Attribute.Decimal;
-    type: Schema.Attribute.Enumeration<['Kg.', 'Mtrs.', 'Unidades', 'Ltrs.']>;
-    unit: Schema.Attribute.BigInteger;
+    unit: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -549,6 +555,7 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
       'api::department.department'
     >;
     description: Schema.Attribute.Text;
+    group: Schema.Attribute.Relation<'oneToOne', 'api::group.group'>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tool.tool'>;
     name: Schema.Attribute.Text & Schema.Attribute.Required;
