@@ -24,12 +24,6 @@
       "type": "biginteger",
       "default": "0"
     },
-    "department": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::department.department",
-      "inversedBy": "tools"
-    },
     "description": {
       "type": "text"
     },

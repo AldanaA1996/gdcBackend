@@ -4,10 +4,11 @@
   "info": {
     "singularName": "department",
     "pluralName": "departments",
-    "displayName": "Department"
+    "displayName": "Department",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {
     "i18n": {
@@ -25,13 +26,12 @@
     "tools": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::tool.tool",
-      "mappedBy": "department"
+      "target": "api::tool.tool"
     },
-    "materia_movements": {
+    "materials": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::materia-movement.materia-movement",
+      "target": "api::material.material",
       "mappedBy": "department"
     }
   }

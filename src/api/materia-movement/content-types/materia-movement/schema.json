@@ -35,15 +35,8 @@
     },
     "material": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::material.material",
-      "inversedBy": "material_movements"
-    },
-    "department": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::department.department",
-      "inversedBy": "materia_movements"
+      "relation": "oneToOne",
+      "target": "api::material.material"
     }
   }
 }

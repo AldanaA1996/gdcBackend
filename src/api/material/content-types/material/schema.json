@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {
     "i18n": {
@@ -29,8 +29,7 @@
     "material_movements": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::materia-movement.materia-movement",
-      "mappedBy": "material"
+      "target": "api::materia-movement.materia-movement"
     },
     "group": {
       "type": "relation",
@@ -42,8 +41,9 @@
     },
     "department": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::department.department"
+      "relation": "manyToOne",
+      "target": "api::department.department",
+      "inversedBy": "materials"
     }
   }
 }

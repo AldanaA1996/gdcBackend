@@ -372,12 +372,13 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiDepartmentDepartment extends Struct.CollectionTypeSchema {
   collectionName: 'departments';
   info: {
+    description: '';
     displayName: 'Department';
     pluralName: 'departments';
     singularName: 'department';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   pluginOptions: {
     i18n: {
@@ -394,10 +395,7 @@ export interface ApiDepartmentDepartment extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::department.department'
     >;
-    materia_movements: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::materia-movement.materia-movement'
-    >;
+    materials: Schema.Attribute.Relation<'oneToMany', 'api::material.material'>;
     name: Schema.Attribute.Text & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     tools: Schema.Attribute.Relation<'oneToMany', 'api::tool.tool'>;
@@ -462,16 +460,12 @@ export interface ApiMateriaMovementMateriaMovement
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    department: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::department.department'
-    >;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::materia-movement.materia-movement'
     >;
-    material: Schema.Attribute.Relation<'manyToOne', 'api::material.material'>;
+    material: Schema.Attribute.Relation<'oneToOne', 'api::material.material'>;
     movement_date: Schema.Attribute.Date;
     movement_type: Schema.Attribute.Enumeration<['entry', 'exit']> &
       Schema.Attribute.Required;
@@ -493,7 +487,7 @@ export interface ApiMaterialMaterial extends Struct.CollectionTypeSchema {
     singularName: 'material';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   pluginOptions: {
     i18n: {
@@ -505,7 +499,7 @@ export interface ApiMaterialMaterial extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     department: Schema.Attribute.Relation<
-      'oneToOne',
+      'manyToOne',
       'api::department.department'
     >;
     description: Schema.Attribute.Text;
@@ -550,10 +544,6 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    department: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::department.department'
-    >;
     description: Schema.Attribute.Text;
     group: Schema.Attribute.Relation<'oneToOne', 'api::group.group'>;
     locale: Schema.Attribute.String;
@@ -576,7 +566,7 @@ export interface ApiVolunteerVolunteer extends Struct.CollectionTypeSchema {
     singularName: 'volunteer';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   pluginOptions: {
     i18n: {
