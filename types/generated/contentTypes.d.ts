@@ -544,6 +544,10 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    department: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::department.department'
+    >;
     description: Schema.Attribute.Text;
     group: Schema.Attribute.Relation<'oneToOne', 'api::group.group'>;
     locale: Schema.Attribute.String;

@@ -37,6 +37,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::group.group"
+    },
+    "department": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::department.department"
     }
   }
 }
